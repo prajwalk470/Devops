@@ -1,0 +1,12 @@
+- hosts: localhost
+  tasks:
+    - name: Pull Docker image
+      command: docker pull prajwalk079/springboot-app:v1
+
+    - name: Stop existing container
+      command: docker rm -f springboot-app
+      ignore_errors: yes
+
+    - name: Run Docker container
+      command: docker run -d --name springboot-app -p 8080:8080 prajwalk079/springboot-app:v1
+
